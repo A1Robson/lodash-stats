@@ -7,7 +7,6 @@ namespace LodashStats.Services;
 
 public class GitHubFileRetrievalServiceContentApi(ILogger<GitHubFileRetrievalServiceContentApi> log, IGitHubApiClient gitHubApiClient, LodashRunnerOptions options) : IGitHubFileRetrievalService
 {
-
     public async IAsyncEnumerable<RetrievedFileInfo> RetrieveFilesAsync(List<string>? fileExtensionsIncPeriod)
     {
         Func<string, bool> validExtension = fileExtensionsIncPeriod == null || fileExtensionsIncPeriod.Count == 0 ? _ => true : fileName => fileExtensionsIncPeriod.Contains(Path.GetExtension(fileName));
